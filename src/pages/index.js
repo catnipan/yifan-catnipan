@@ -17,7 +17,7 @@ export default function Home() {
       <div>
         <h3 className={style.subtitle}>Frontend Software Engineer <a className={style.companyLink} href="https://www.betalpha.com/" target="_blank">@Betalpha</a></h3>
         <ul className={style.ul}>
-          <li>Developed backtesting, factor attribution and portfolio optimization modules using Electron, React and Redux foran investment research software used by top asset management companies managing billions of funding.</li>
+          <li>Developed backtesting, factor attribution and portfolio optimization modules using Electron, React and Redux for an investment research software used by top asset management companies managing billions of funding.</li>
           <li>Introduced Redux-Saga to the team to handle increasing complexity of communication with server for computationtasks, reducing asynchronous bugs by 80%.</li>
           <li>Kept code duplication rate constantly below 5% by abstracting common features (e.g.  access control andspreadsheet generation) into higher-order React components.</li>
           <li>Analyzed performance issue and optimized a major inefficiency caused by repeated generation of Redux dataselectors, saving memory use by 10%.</li>
