@@ -17,51 +17,43 @@ export default function Home() {
       <div>
         <h3 className={style.subtitle}>Frontend Software Engineer <a className={style.companyLink} href="https://www.betalpha.com/" target="_blank">@Betalpha</a></h3>
         <ul className={style.ul}>
-          <li>Developed a financial research desktop application using Electron, React and Redux.</li>
-          <li>Introduced Redux-Saga to the dev team for dealing with challenges of complex async logic.</li>
+          <li>Developed backtesting, factor attribution and portfolio optimization modules using Electron, React and Redux foran investment research software used by top asset management companies managing billions of funding.</li>
+          <li>Introduced Redux-Saga to the team to handle increasing complexity of communication with server for computationtasks, reducing asynchronous bugs by 80%.</li>
+          <li>Kept code duplication rate constantly below 5% by abstracting common features (e.g.  access control andspreadsheet generation) into higher-order React components.</li>
+          <li>Analyzed performance issue and optimized a major inefficiency caused by repeated generation of Redux dataselectors, saving memory use by 10%.</li>
         </ul>
         <h3 className={style.subtitle}>Frontend Software Engineer <a className={style.companyLink} href="https://www.fotor.com.cn/" target="_blank">@Everimaging</a></h3>
         <ul className={style.ul}>
-          <li>Developed several Single-Page Applications: design works submit and review system, designer's portfolio page, printing order center.</li>
+          <li>Built single-page applications using React and React Router for submit and review system of design works,designer’s portfolio page and printing order system, achieving 10k+ daily active users.</li>
+          <li>Led a team of 3 developers to work on localization and optimization of the Fotor online design platform.</li>
+          <li>Refactored help center from WordPress-based into Jamstack-based using Hugo, reducing loading time by 80%.</li>
         </ul>
       </div>
     </section>
     <section className={style.section}>
       <h2 className={style.title}>Selected Projects</h2>
-      <h3 className={style.subtitle}>Connect Four Online Battle</h3>
+      <h3 className={style.subtitle}><a href="https://catnipan.com/g/connect-four" target="_blank">Connect Four Online Battle</a></h3>
       <ul>
-        <li>
-          Created an game supporting multiple online players playing with computers, playing with friends via a room link or pairing with a random stranger.
-        </li>
-        <li>
-        Developed a Rust server based on the Actix framework. Implemented client-server communication via WebSocket.
-        </li>
-        <li>
-        Implemented a 3D game interface using Three.js and game dashboard using React.
-        </li>
+        <li>Created a 3D online game supporting multiple users playing with an AI client, playing and chatting with friends viaa room link, or playing with a stranger by random pairing.</li>
+        <li>Developed a Rust server using Actix framework and deployed on Vultr cloud.  Implemented data structure forstoring user session, game status, room allocation and player data, allowing broadcasting real-time update to endplayers through WebSocket.</li>
+        <li>Implemented the 3D interface using Three.js and configured geometry, material and light to make it pretty.</li>
+        <li>Completed the game dashboard in React, Redux and Redux-Saga, allowing interaction between React componentsand non-React HTML Canvas.</li>
       </ul>
       <h3 className={style.subtitle}>Blog Content Management System</h3>
       <ul>
-        <li>
-          Developed a blog integrating with a Koa Node.js server, daemon process manager PM2 and MongoDB database.
-        </li>
-        <li>
-          Designed RESTful APIs and completed both front and back ends of the Content Management System, including login flow, CRUD and a proxy of Google Analytics.
-        </li>
-        <li>
-        Accomplished front/back-end isomorphism through server-side rendering, boosting first screen load speed by 50%.
-        </li>
+        <li>Developed a blog system and deployed on Alibaba cloud, supporting rendering Markdown articles with mathformula using React, Redux, React Router, Node.js and MongoDB.</li>
+        <li>Realized features including auto-save while editing, side-by-side live preview and delete recovery.</li>
+        <li>Accelerated loading speed by 50% through self-implemented front/back-end isomorphism.</li>
       </ul>
-      <h3 className={style.subtitle}>RegExp Library</h3>
+      <h3 className={style.subtitle}><a href="https://github.com/catnipan/regexp" target="_blank">Mini RegExp Library</a></h3>
+      <ul>
+        <li>Implemented a Rust library for parsing, compiling, and executing regular expressions. Provided full support forescape character, concatenation, alternation and Kleene star symbols.</li>
+        <li>Completed both DFA(deterministic finite automaton) and NFA(non-determinisitc finite automaton)implementations. Built an arithmetic expression lexer based on it.</li>
+      </ul>
+      <h3 className={style.subtitle}><a href="https://github.com/catnipan/redux-extras" target="_blank">Redux-Extras</a></h3>
       <ul>
         <li>
-          Implemented a Rust library for parsing, compiling, and executing regular expressions based on both deterministic finite automaton and non-deterministic finite automaton.
-        </li>
-      </ul>
-      <h3 className={style.subtitle}>Redux-Extras</h3>
-      <ul>
-        <li>
-          Wrote an open-source JavaScript package providing easy-to-use utility functions for Redux.
+          An open-source JavaScript package providing easy-to-use utility functions for Redux.
         </li>
       </ul>
     </section>
@@ -74,12 +66,21 @@ export default function Home() {
         <li>
           Candidate for a Master of Science in Computer Science (Expected Graduation:  May 2022)
         </li>
+        <li>
+          GPA: 4.0/4.0
+        </li>
+        <li>
+          Teaching Assistant for Discrete Structures
+        </li>
       </ul>
       <h3>
         Southwestern University of Finance and Economics
       </h3>
       <ul>
         <li>Bachelor of Economics</li>
+        <li>
+          GPA: 89/100
+        </li>
       </ul>
     </section>
   </div>

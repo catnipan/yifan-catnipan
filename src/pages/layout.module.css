@@ -64,3 +64,14 @@ ul {
   line-height: 1.7em;
   max-width: 45em;
 }
+
+a {
+  color: #333;
+}
+
+.address {
+  font-weight: normal;
+  font-size: 0.8em;
+  font-style: italic;
+  margin-left: 1em;
+}
