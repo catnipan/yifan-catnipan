@@ -24,15 +24,10 @@ export default function Home() {
         <h3 className={style.subtitle}>Frontend Software Engineer <a className={style.companyLink} href="https://www.betalpha.com/" target="_blank">@Betalpha</a></h3>
         <ul className={style.ul}>
           <li>Developed backtesting, factor attribution and portfolio optimization modules using Electron, React and Redux for an investment research software used by top asset management companies managing billions of funding.</li>
-          <li>Introduced Redux-Saga to the team to handle increasing complexity of communication with server for computationtasks, reducing asynchronous bugs by 80%.</li>
-          <li>Kept code duplication rate constantly below 5% by abstracting common features (e.g.  access control andspreadsheet generation) into higher-order React components.</li>
-          <li>Analyzed performance issue and optimized a major inefficiency caused by repeated generation of Redux dataselectors, saving memory use by 10%.</li>
         </ul>
         <h3 className={style.subtitle}>Frontend Software Engineer <a className={style.companyLink} href="https://www.fotor.com.cn/" target="_blank">@Everimaging</a></h3>
         <ul className={style.ul}>
           <li>Built single-page applications using React and React Router for submit and review system of design works,designer’s portfolio page and printing order system, achieving 10k+ daily active users.</li>
-          <li>Led a team of 3 developers to work on localization and optimization of the Fotor online design platform.</li>
-          <li>Refactored help center from WordPress-based into Jamstack-based using Hugo, reducing loading time by 80%.</li>
         </ul>
       </div>
     </section>
