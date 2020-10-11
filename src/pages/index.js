@@ -1,9 +1,15 @@
 import React from "react"
 import style from "./layout.module.css"
+import { Helmet } from "react-helmet";
 import "./global.css"
 
 export default function Home() {
   return <div className={style.wrapper}>
+     <Helmet>
+        <meta charSet="utf-8" />
+        <title>Yifan Pan</title>
+        <link rel="canonical" href="https://yifan.catnipan.com" />
+    </Helmet>
     <header className={style.header}>
       <p className={style.hello}>Hello!</p>
       <p className={style.name}>My name is Yifan Pan.</p>
