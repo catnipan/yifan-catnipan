@@ -7,3 +7,27 @@ body {
 p {
   margin: 0;
 }
+
+a.openInNewWindow {
+  color: #111;
+  text-decoration: none;
+  border-bottom: 2px solid #d5d5d5;
+}
+
+a.openInNewWindow:hover {
+  color: green;
+  border-bottom: 2px solid #b1bfb1;
+}
+
+.openInNewWindow::after {
+  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
+  margin: 0px 3px 0px 5px;
+}
+
+footer {
+  clear: both;
+  padding: 2em 0;
+  color: #111;
+  border-top: 1px solid #f0f0f0;
+  margin-top: 8em;
+}

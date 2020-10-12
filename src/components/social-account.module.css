@@ -1,0 +1,28 @@
+.resumeButton {
+  line-height: 1.7em;
+  border: 1px solid #333;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 1em;
+  color: #111;
+  padding: 0 0.5em;
+  border-radius: 9px;
+  box-shadow: inset 0px -8px 0px #e6e6e6, 0px 1px 0px #333;
+  text-decoration: none;
+}
+
+.resumeButton:hover {
+  color: #111;
+  background: white;
+  box-shadow: inset 0px -8px 0px yellow, 0px 1px 0px #333;
+}
+
+.resumeButton:active {
+  color: #111;
+  background: white;
+  box-shadow: inset 0px -8px 0px yellow, 0px 1px 0px #333;
+}
+
+.linkButton {
+  margin: 0 0.5em;
+}
