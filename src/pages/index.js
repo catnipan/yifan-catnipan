@@ -12,7 +12,7 @@ function Link({ href, children }) {
 }
 
 export default function Home() {
-  return <div className={style.wrapper}>
+  return <div>
      <Helmet>
         <meta charSet="utf-8" />
         <title>Yifan Pan</title>
@@ -28,13 +28,12 @@ export default function Home() {
         I love math and I enjoy the beautiful interplay between mathematics and programming. I'm a cat lover. In my spare time, I enjoy reading sci-fi novels and watching suspense movies.
       </p>
       <p className={style.socialAccount}><SocialAccount /><img src={resumeArrow} className={style.resumeArrow}/></p>
-      <p className={style.intro}>You can read my resume</p>
-      <p className={style.intro}>or take a loot at some projects that I've worked on:</p>
+      <p className={style.intro}>You can read my resume,&emsp;&nbsp;or take a loot at some projects I've worked on.</p>
     </header>
     <section className={style.section}>
-      <div>
+      <div className={style.project}>
         <h2 className={style.title}>Connect Four Online Battle</h2>
-        <img className={style.descImg} src={connectFourPng} />
+        <img className={style.descImg} src={connectFourPng} alt="connect four game" />
         <p><Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link></p>
         <ul className={style.desc}>
           <li>A 3D online game supporting multiple users playing with an AI client, playing and chatting with friends via room link, or playing with a stranger by random pairing.</li>
@@ -42,7 +41,7 @@ export default function Home() {
           <li>Frontend: Three.js + React + Redux + Redux-Saga</li>
         </ul>
       </div>
-      <div>
+      <div className={style.project}>
         <h2 className={style.title}>Mini RegExp Library</h2>
         <p><Link href="https://github.com/catnipan/regexp">Source code</Link></p>
         <ul className={style.desc}>
@@ -51,7 +50,7 @@ export default function Home() {
           </li>
         </ul>
       </div>
-      <div>
+      <div className={style.project}>
         <h2 className={style.title}>Redux-Extras</h2>
         <p><Link href="https://github.com/catnipan/redux-extras">Source code</Link></p>
         <ul className={style.desc}>
@@ -60,14 +59,15 @@ export default function Home() {
           </li>
         </ul>
       </div>
-      <div>
+      <div className={style.project}>
         <h2 className={style.title}>Algorithm Animation</h2>
-        <img className={style.descImg} src={labyrinthSearchPng} />
+        <img className={style.descImg} src={labyrinthSearchPng} alt="labyrinth search"/>
         <ul className={style.desc}>
           <li><Link href="https://codepen.io/catnipan/pen/EGvywd">Labyrinth Search Animation</Link></li>
           <li><Link href="https://codepen.io/catnipan/pen/yZpdMo">Hanoi Tower Animation</Link></li>
         </ul>
       </div>
+      <div className={style.clear}></div>
     </section>
     <footer>
       <p>Built with Gatsby.js and hosted on Github.</p>

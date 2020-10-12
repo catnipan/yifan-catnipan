@@ -14,6 +14,7 @@ function IconLink({ src, activeSrc, href }) {
   return <a className={style.linkButton} href={href} target="_blank" rel="noreferrer">
     <img
       src={icon}
+      alt=""
       onMouseOver={() => updateIcon(activeSrc)}
       onMouseOut={() => updateIcon(src)}
     />
