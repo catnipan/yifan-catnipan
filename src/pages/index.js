@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import style from "./layout.module.css"
 import { Helmet } from "react-helmet";
 import SocialAccount from '../components/social-account';
@@ -6,9 +6,15 @@ import "./global.css"
 import connectFourPng from '../../static/connect-four.png';
 import labyrinthSearchPng from '../../static/labyrinth-search.png';
 import resumeArrow from '../../static/resume_arrow.png';
+import cat from '../../static/cat.png';
+
+function Cat() {
+  const [hovered, updateHovered] = useState(false);
+  return <img className={`${style.cat} ${hovered ? `${style.wave}` : ''}`} src={cat} alt="cat" onMouseOver={() => updateHovered(true)} onMouseOut={() => updateHovered(false)} />;
+}
 
 function Link({ href, children }) {
-  return <a className="openInNewWindow" href={href} target="_blank">{children}</a>
+  return <a className="openInNewWindow" href={href} target="_blank" rel="noreferrer">{children}</a>
 }
 
 export default function Home() {
@@ -22,17 +28,17 @@ export default function Home() {
       <p className={style.hello}>Hello!</p>
       <p className={style.name}>My name is Yifan Pan.</p>
       <p className={style.intro}>
-        I'm currently pursuing a Master's degree in Computer Science at Northeastern University. Prior to that I was as a self-taught front-end software engineer.
+        I'm currently pursuing a Master's degree in Computer Science at Northeastern University. Prior to that I was a self-taught front-end software engineer.
       </p>
       <p className={style.intro}>
-        I love math and I enjoy the beautiful interplay between mathematics and programming. I'm a cat lover. In my spare time, I enjoy reading sci-fi novels and watching suspense movies.
+        I love math and I enjoy the beautiful interplay between mathematics and programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
       </p>
       <p className={style.socialAccount}><SocialAccount /><img src={resumeArrow} className={style.resumeArrow}/></p>
-      <p className={style.intro}>You can read my resume,&emsp;&nbsp;or take a loot at some projects I've worked on.</p>
+      <p className={style.intro}>You can read my resume,&emsp;&nbsp;or take a look at some projects that I've been working on :)</p>
     </header>
     <section className={style.section}>
+      <h2 className={style.title}>Connect Four Online Battle</h2>
       <div className={style.project}>
-        <h2 className={style.title}>Connect Four Online Battle</h2>
         <img className={style.descImg} src={connectFourPng} alt="connect four game" />
         <p><Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link></p>
         <ul className={style.desc}>
@@ -41,8 +47,8 @@ export default function Home() {
           <li>Frontend: Three.js + React + Redux + Redux-Saga</li>
         </ul>
       </div>
+      <h2 className={style.title}>Mini RegExp Library</h2>
       <div className={style.project}>
-        <h2 className={style.title}>Mini RegExp Library</h2>
         <p><Link href="https://github.com/catnipan/regexp">Source code</Link></p>
         <ul className={style.desc}>
           <li>
@@ -50,8 +56,8 @@ export default function Home() {
           </li>
         </ul>
       </div>
+      <h2 className={style.title}>Redux-Extras</h2>
       <div className={style.project}>
-        <h2 className={style.title}>Redux-Extras</h2>
         <p><Link href="https://github.com/catnipan/redux-extras">Source code</Link></p>
         <ul className={style.desc}>
           <li>
@@ -59,8 +65,8 @@ export default function Home() {
           </li>
         </ul>
       </div>
+      <h2 className={style.title}>Algorithm Animation</h2>
       <div className={style.project}>
-        <h2 className={style.title}>Algorithm Animation</h2>
         <img className={style.descImg} src={labyrinthSearchPng} alt="labyrinth search"/>
         <ul className={style.desc}>
           <li><Link href="https://codepen.io/catnipan/pen/EGvywd">Labyrinth Search Animation</Link></li>

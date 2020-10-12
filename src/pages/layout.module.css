@@ -2,25 +2,26 @@
 }
 
 .header {
-  padding: 10vh 5vw 0;
+  padding: 0 5vw;
   min-height: 100vh;
   max-width: 49em;
 }
 
 .hello {
+  padding-top: 10vh;
   font-size: 4.5em;
   font-weight: 500;
 }
 
 .name {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 2.2em;
   padding: 1em 0 1em;
 }
 
 .intro {
   font-size: 1.6em;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1.6;
   padding-bottom: 1em;
 }
@@ -60,6 +61,7 @@
 .desc {
   list-style: disc;
   padding: 0;
+  max-width: 50em;
 }
 
 .desc li {
@@ -68,11 +70,11 @@
 }
 
 .descImg {
-  float: right;
+  float: inline-end;
   border: 1px solid #d2d2d2;
   border-radius: 7px;
   box-shadow: 5px 5px 0px #fff;
-  margin: 2em 0em 1em 1em;
+  margin: 0em 0em 1em 1em;
 }
 
 .resumeArrow {
@@ -83,9 +85,57 @@
 }
 
 .project {
-  max-width: 50em;
 }
 
 .clear {
   clear: both;
+}
+
+.cat {
+  width: 1.5em;
+  vertical-align: bottom;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  cursor: pointer;
+}
+
+.wave {
+  animation-name: wave;
+}
+
+@keyframes wave {
+	from {
+		-webkit-transform: none;
+		transform: none
+	}
+	15% {
+		-webkit-transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg);
+		transform: translate3d(-20%, 0, 0) rotate3d(0, 0, 1, -10deg)
+	}
+	30% {
+		-webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 7deg);
+		transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 7deg)
+	}
+	45% {
+		-webkit-transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -10deg);
+		transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -10deg)
+	}
+	60% {
+		-webkit-transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg);
+		transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 5deg)
+	}
+	75% {
+		-webkit-transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -2deg);
+		transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -2deg)
+	}
+	to {
+		-webkit-transform: none;
+		transform: none
+	}
+}
+
+@media (max-width: 600px) {
+  .descImg {
+    float: none;
+  }
 }
