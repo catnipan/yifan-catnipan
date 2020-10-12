@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { Fragment, useState } from "react"
 import LogoGithub from '../../static/logo_github.svg';
 import LogoLinkedin from '../../static/logo_linkedin.svg';
 import LogoMail from '../../static/logo_mail.svg';
@@ -21,7 +21,7 @@ function IconLink({ src, activeSrc, href }) {
 }
 
 export default function() {
-  return <div>
+  return <Fragment>
     <IconLink
       src={LogoGithub}
       activeSrc={LogoGithubActive}
@@ -42,5 +42,5 @@ export default function() {
       activeSrc={LogoResumeActive}
       href="https://www.dropbox.com/s/niwc26ly3gsiifc/Yifan_Pan_resume.pdf"
     />
-  </div>
+  </Fragment>
 }

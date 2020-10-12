@@ -27,8 +27,8 @@ export default function Home() {
       <p className={style.intro}>
         I love math and I enjoy the beautiful interplay between mathematics and programming. I'm a cat lover. In my spare time, I enjoy reading sci-fi novels and watching suspense movies.
       </p>
-      <p className={style.socialAccount}><SocialAccount /></p>
-      <p className={style.intro}>You can read my resume <img src={resumeArrow} className={style.resumeArrow}/></p>
+      <p className={style.socialAccount}><SocialAccount /><img src={resumeArrow} className={style.resumeArrow}/></p>
+      <p className={style.intro}>You can read my resume</p>
       <p className={style.intro}>or take a loot at some projects that I've worked on:</p>
     </header>
     <section className={style.section}>
