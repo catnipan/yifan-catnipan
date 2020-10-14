@@ -93,11 +93,11 @@ export default function Home() {
         </li>
       </Project>
       <Project
-        title="Algorithm Animation"
+        title="Algorithm Visualization"
         img={labyrinthSearchPng}
       >
-          <li><Link href="https://codepen.io/catnipan/pen/EGvywd">Labyrinth Search Animation</Link></li>
-          <li><Link href="https://codepen.io/catnipan/pen/yZpdMo">Hanoi Tower Animation</Link></li>
+          <li><Link href="https://codepen.io/catnipan/pen/EGvywd">Labyrinth Search Visualization</Link></li>
+          <li><Link href="https://codepen.io/catnipan/pen/yZpdMo">Hanoi Tower Visualization</Link></li>
       </Project>
     </section>
     <footer>
