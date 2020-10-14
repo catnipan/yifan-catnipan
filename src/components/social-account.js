@@ -21,7 +21,7 @@ function IconLink({ src, activeSrc, href }) {
   </a>
 }
 
-export default function() {
+export default function SocialAccount() {
   return <Fragment>
     <IconLink
       src={LogoGithub}
