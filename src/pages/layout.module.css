@@ -32,7 +32,7 @@
 }
 
 .title {
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 1.4em;
   position: relative;
   z-index: 1;
@@ -46,7 +46,7 @@
   left: -0.1em;
   right: -0.1em;
   bottom: 0;
-  background-color: rgba(79,192,141,0.5);
+  background-color: rgba(217, 217, 217, 0.5);
 }
 
 .section {
@@ -58,10 +58,41 @@
   box-sizing: border-box;
 }
 
+.projectWrapper {
+  display: flex;
+}
+
+
+.project {
+  flex: 1;
+}
+
+.projectImg {
+
+}
+
+.placeholderImg {
+  border: 1px solid #d2d2d2;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 5px 5px 0px #fff;
+  margin: 0em 0em 1em 1em;
+  width: 260px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  overflow: hidden;
+  color: #34a6d0;
+  text-align: center;
+  background: url("../../static/bg.png");
+}
+
 .desc {
   list-style: disc;
   padding: 0;
-  max-width: 50em;
+  max-width: 40em;
 }
 
 .desc li {
@@ -70,7 +101,6 @@
 }
 
 .descImg {
-  float: inline-end;
   border: 1px solid #d2d2d2;
   border-radius: 7px;
   box-shadow: 5px 5px 0px #fff;
@@ -84,8 +114,6 @@
   pointer-events: none;
 }
 
-.project {
-}
 
 .clear {
   clear: both;
@@ -135,7 +163,7 @@
 }
 
 @media (max-width: 600px) {
-  .descImg {
-    float: none;
+  .projectWrapper {
+    flex-direction: column;
   }
 }

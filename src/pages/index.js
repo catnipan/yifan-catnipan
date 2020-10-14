@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { Fragment, useState } from "react"
 import style from "./layout.module.css"
 import { Helmet } from "react-helmet";
 import SocialAccount from '../components/social-account';
@@ -15,6 +15,30 @@ function Cat() {
 
 function Link({ href, children }) {
   return <a className="openInNewWindow" href={href} target="_blank" rel="noreferrer">{children}</a>
+}
+
+function Project({ title, img, placeholder, subtitle, children }) {
+  return (
+    <Fragment>
+      <h2 className={style.title}>{title}</h2>
+      <div className={style.projectWrapper}>
+        <div className={style.project}>
+          {subtitle && <p>{subtitle}</p>}
+          <ul className={style.desc}>
+            {children}
+          </ul>
+        </div>
+        <div className={style.projectImg}>
+          {img
+            ? <img className={style.descImg} src={img} alt={title} />
+            : <div className={style.placeholderImg}>
+                {placeholder}
+              </div>
+          }
+        </div>
+      </div>
+    </Fragment>
+  )
 }
 
 export default function Home() {
@@ -37,43 +61,44 @@ export default function Home() {
       <p className={style.intro}>You can read my resume,&emsp;&nbsp;or take a look at some projects that I've been working on :)</p>
     </header>
     <section className={style.section}>
-      <h2 className={style.title}>Connect Four Online Battle</h2>
-      <div className={style.project}>
-        <img className={style.descImg} src={connectFourPng} alt="connect four game" />
-        <p><Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link></p>
-        <ul className={style.desc}>
-          <li>A 3D online game supporting multiple users playing with an AI client, playing and chatting with friends via room link, or playing with a stranger by random pairing.</li>
-          <li>Backend: Rust + Actix + WebSocket</li>
-          <li>Frontend: Three.js + React + Redux + Redux-Saga</li>
-        </ul>
-      </div>
-      <h2 className={style.title}>Mini RegExp Library</h2>
-      <div className={style.project}>
-        <p><Link href="https://github.com/catnipan/regexp">Source code</Link></p>
-        <ul className={style.desc}>
-          <li>
-            A Rust library for parsing, compiling, and executing regular expressions, supported both DFA and NFA implementations.
-          </li>
-        </ul>
-      </div>
-      <h2 className={style.title}>Redux-Extras</h2>
-      <div className={style.project}>
-        <p><Link href="https://github.com/catnipan/redux-extras">Source code</Link></p>
-        <ul className={style.desc}>
-          <li>
-            A JavaScript library providing easy-to-use utility functions for Redux, inspired by Redux-Saga's pattern match.
-          </li>
-        </ul>
-      </div>
-      <h2 className={style.title}>Algorithm Animation</h2>
-      <div className={style.project}>
-        <img className={style.descImg} src={labyrinthSearchPng} alt="labyrinth search"/>
-        <ul className={style.desc}>
+      <Project
+        title="Connect Four Online Battle"
+        subtitle={
+          <Fragment>
+            <Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link>
+          </Fragment>
+        }
+        img={connectFourPng}
+      >
+        <li>A 3D online game supporting multiple users playing with an AI client, playing and chatting with friends via room link, or playing with a stranger by random pairing.</li>
+        <li>Backend: Rust + Actix + WebSocket</li>
+        <li>Frontend: Three.js + React + Redux + Redux-Saga</li>
+      </Project>
+      <Project
+        title="Mini RegExp Library"
+        subtitle={<Link href="https://github.com/catnipan/regexp">Source code</Link>}
+        placeholder="(a|bc)*abb"
+      >
+        <li>
+          A Rust library for parsing, compiling, and executing regular expressions, supported both DFA and NFA implementations.
+        </li>
+      </Project>
+      <Project
+        title="Redux-Extras"
+        subtitle={<Link href="https://github.com/catnipan/redux-extras">Source code</Link>}
+        placeholder="redux-extras"
+      >
+        <li>
+          A JavaScript library providing easy-to-use utility functions for Redux, inspired by Redux-Saga's pattern match.
+        </li>
+      </Project>
+      <Project
+        title="Algorithm Animation"
+        img={labyrinthSearchPng}
+      >
           <li><Link href="https://codepen.io/catnipan/pen/EGvywd">Labyrinth Search Animation</Link></li>
           <li><Link href="https://codepen.io/catnipan/pen/yZpdMo">Hanoi Tower Animation</Link></li>
-        </ul>
-      </div>
-      <div className={style.clear}></div>
+      </Project>
     </section>
     <footer>
       <p>Built with Gatsby.js and hosted on Github.</p>
