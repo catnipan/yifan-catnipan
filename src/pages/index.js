@@ -17,7 +17,7 @@ function Link({ href, children }) {
   return <a className="openInNewWindow" href={href} target="_blank" rel="noreferrer">{children}</a>
 }
 
-function Project({ title, img, placeholder, subtitle, children }) {
+function Project({ title, img, placeholder, subtitle, children, tags=[] }) {
   return (
     <Fragment>
       <h2 className={style.title}>{title}</h2>
@@ -27,6 +27,11 @@ function Project({ title, img, placeholder, subtitle, children }) {
           <ul className={style.desc}>
             {children}
           </ul>
+          <div>
+            {tags.map(tag => (
+              <span className={style.tag} key={tag}>{tag}</span>
+            ))}
+          </div>
         </div>
         <div className={style.projectImg}>
           {img
@@ -69,15 +74,15 @@ export default function Home() {
           </Fragment>
         }
         img={connectFourPng}
+        tags={['Rust', 'Actix', 'WebSocket', 'Three.js', 'React', 'Redux', 'Redux-Saga']}
       >
         <li>A 3D online game supporting multiple users playing with an AI client, playing and chatting with friends via room link, or playing with a stranger by random pairing.</li>
-        <li>Backend: Rust + Actix + WebSocket</li>
-        <li>Frontend: Three.js + React + Redux + Redux-Saga</li>
       </Project>
       <Project
         title="Mini RegExp Library"
         subtitle={<Link href="https://github.com/catnipan/regexp">Source code</Link>}
         placeholder="(a|bc)*abb"
+        tags={['Rust']}
       >
         <li>
           A Rust library for parsing, compiling, and executing regular expressions, supported both DFA and NFA implementations.
@@ -87,6 +92,7 @@ export default function Home() {
         title="Redux-Extras"
         subtitle={<Link href="https://github.com/catnipan/redux-extras">Source code</Link>}
         placeholder="redux-extras"
+        tags={['JavaScript']}
       >
         <li>
           A JavaScript library providing easy-to-use utility functions for Redux, inspired by Redux-Saga's pattern match.
@@ -95,6 +101,7 @@ export default function Home() {
       <Project
         title="Algorithm Visualization"
         img={labyrinthSearchPng}
+        tags={['React', 'JavaScript']}
       >
           <li><Link href="https://codepen.io/catnipan/pen/EGvywd">Labyrinth Search Visualization</Link></li>
           <li><Link href="https://codepen.io/catnipan/pen/yZpdMo">Hanoi Tower Visualization</Link></li>

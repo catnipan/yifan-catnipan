@@ -26,5 +26,6 @@ a.openInNewWindow:hover {
 
 footer {
   padding: 2em 5vw;
-  color: #a9a9a9;
+  color: #999;
+  font-weight: 200;
 }
