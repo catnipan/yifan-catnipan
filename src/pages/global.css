@@ -15,8 +15,8 @@ a.openInNewWindow {
 }
 
 a.openInNewWindow:hover {
-  color: green;
-  border-bottom: 2px solid #b1bfb1;
+  border-bottom: 2px solid #ffe300;
+  background: yellow;
 }
 
 .openInNewWindow::after {
@@ -31,5 +31,5 @@ footer {
 }
 
 ::selection {
-  background: greenyellow;
+  background: #eeeeee;
 }

@@ -23,7 +23,6 @@ function Project({ title, img, placeholder, subtitle, children, tags=[] }) {
       <h2 className={style.title}>{title}</h2>
       <div className={style.projectWrapper}>
         <div className={style.project}>
-          {subtitle && <p>{subtitle}</p>}
           <ul className={style.desc}>
             {children}
           </ul>
@@ -68,32 +67,34 @@ export default function Home() {
     <section className={style.section}>
       <Project
         title="Connect Four Online Battle"
-        subtitle={
-          <Fragment>
-            <Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link>
-          </Fragment>
-        }
         img={connectFourPng}
         tags={['Rust', 'Actix', 'WebSocket', 'Three.js', 'React', 'Redux', 'Redux-Saga']}
       >
+        <li>
+          <Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link>
+        </li>
         <li>A 3D online game supporting multiple users playing with an AI client, playing and chatting with friends via room link, or playing with a stranger by random pairing.</li>
       </Project>
       <Project
         title="Mini RegExp Library"
-        subtitle={<Link href="https://github.com/catnipan/regexp">Source code</Link>}
         placeholder="(a|bc)*abb"
         tags={['Rust']}
       >
+        <li>
+          <Link href="https://github.com/catnipan/regexp">Source code</Link>
+        </li>
         <li>
           A Rust library for parsing, compiling, and executing regular expressions, supported both DFA and NFA implementations.
         </li>
       </Project>
       <Project
         title="Redux-Extras"
-        subtitle={<Link href="https://github.com/catnipan/redux-extras">Source code</Link>}
         placeholder="redux-extras"
         tags={['JavaScript']}
       >
+        <li>
+          <Link href="https://github.com/catnipan/redux-extras">Source code</Link>
+        </li>
         <li>
           A JavaScript library providing easy-to-use utility functions for Redux, inspired by Redux-Saga's pattern match.
         </li>
