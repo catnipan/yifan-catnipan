@@ -29,3 +29,7 @@ footer {
   color: #999;
   font-weight: 200;
 }
+
+::selection {
+  background: greenyellow;
+}
