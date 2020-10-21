@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import SocialAccount from '../components/social-account';
 import "./global.css"
 import connectFourPng from '../../static/connect-four.png';
+import memorizingPng from '../../static/memorizing.png';
 import labyrinthSearchPng from '../../static/labyrinth-search.png';
 import resumeArrow from '../../static/resume_arrow.png';
 import cat from '../../static/cat.png';
@@ -74,6 +75,16 @@ export default function Home() {
           <Link href="https://catnipan.com/g/connect-four">Try Online</Link> | <Link href="https://github.com/catnipan/connect-four">Source code</Link>
         </li>
         <li>A 3D online game supporting multiple users playing with an AI client, playing and chatting with friends via room link, or playing with a stranger by random pairing.</li>
+      </Project>
+      <Project
+        title="Memorizing"
+        img={memorizingPng}
+        tags={['Go', 'MySQL', 'Redis', 'GraphQL', 'React', 'Apollo']}
+      >
+        <li>
+          <Link href="https://catnipan.com/memorizing">Try Online</Link> | <Link href="https://github.com/catnipan/memorizing-app">Source code</Link>
+        </li>
+        <li>An app helping user combat the forgetting curve when learning new words, poets, etc. by scheduling reinforced reviews automatically.</li>
       </Project>
       <Project
         title="Mini RegExp Library"
