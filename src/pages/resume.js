@@ -1,11 +1,14 @@
 import { navigate } from "gatsby"
-import React from "react"
+import React, { useEffect } from "react"
 import { Redirect } from 'gatsby';
 import { Helmet } from "react-helmet";
 import style from "./layout.module.css"
 
+const version = Math.random();
 export default function Resume() {
-  navigate(`/resume.pdfv=?${Math.random()}`);
+  useEffect(() => {
+    navigate(`/resume.pdf?v=${version}`);
+  })
   return (
     <div>
       <Helmet>
