@@ -41,7 +41,7 @@ export default function SocialAccount() {
     <IconLink
       src={LogoResume}
       activeSrc={LogoResumeActive}
-      href="https://www.dropbox.com/s/niwc26ly3gsiifc/Yifan_Pan_resume.pdf"
+      href="/resume.pdf"
     />
   </Fragment>
 }
