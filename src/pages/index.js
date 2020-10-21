@@ -63,10 +63,10 @@ export default function Home() {
        I'm currently pursuing a master's degree in computer science at Northeastern University.
       </p>
       <p className={style.intro}>
-        Before that I was a front-end engineer. Except for being fluent in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
+        Before that I was a self-taught front-end engineer. Except for being fluent in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
       </p>
       <p className={style.intro}>
-        I love math, abstraction and all of its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
+        I love math, abstraction and its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
       </p>
       <p className={style.socialAccount}><SocialAccount /><img src={resumeArrow} className={style.resumeArrow}/></p>
       <p className={style.intro}>You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)</p>
