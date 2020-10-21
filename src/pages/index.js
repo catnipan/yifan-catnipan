@@ -54,16 +54,18 @@ export default function Home() {
         <link rel="canonical" href="https://yifan.catnipan.com" />
     </Helmet>
     <header className={style.header}>
-      <p className={style.hello}>Hello!</p>
-      <p className={style.name}>My name is Yifan Pan.</p>
+      <p className={style.hello}>Hi, I'm Yifan Pan.</p>
       <p className={style.intro}>
-        I'm currently pursuing a Master's degree in Computer Science at Northeastern University. Prior to that I was a self-taught front-end software engineer.
+       I'm currently pursuing a master's degree in computer science at Northeastern University.
       </p>
       <p className={style.intro}>
-        I love math and I enjoy the beautiful interplay between mathematics and programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
+        Before that I was a front-end engineer. Except for being fluent in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
+      </p>
+      <p className={style.intro}>
+        I love math, abstraction and all of its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
       </p>
       <p className={style.socialAccount}><SocialAccount /><img src={resumeArrow} className={style.resumeArrow}/></p>
-      <p className={style.intro}>You can read my resume,&emsp;&nbsp;or take a look at some projects that I've been working on :)</p>
+      <p className={style.intro}>You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)</p>
     </header>
     <section className={style.section}>
       <Project
@@ -84,7 +86,7 @@ export default function Home() {
         <li>
           <Link href="https://catnipan.com/memorizing">Try Online</Link> | <Link href="https://github.com/catnipan/memorizing-app">Source code</Link>
         </li>
-        <li>An app helping user combat the forgetting curve when learning new words, poets, etc. by scheduling reinforced reviews automatically.</li>
+        <li>An app helping user combat the forgetting curve when learning new words, poems, etc. by scheduling reinforced reviews automatically.</li>
       </Project>
       <Project
         title="Mini RegExp Library"

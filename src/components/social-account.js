@@ -9,12 +9,12 @@ import LogoResume from '../../static/logo_resume.svg';
 import LogoResumeActive from '../../static/logo_resume_active.svg';
 import style from './social-account.module.css';
 
-function IconLink({ src, activeSrc, href }) {
+function IconLink({ src, activeSrc, alt, href }) {
   const [icon, updateIcon] = useState(src);
   return <a className={style.linkButton} href={href} target="_blank" rel="noreferrer">
     <img
       src={icon}
-      alt=""
+      alt={alt}
       onMouseOver={() => updateIcon(activeSrc)}
       onMouseOut={() => updateIcon(src)}
     />
@@ -26,21 +26,25 @@ export default function SocialAccount() {
     <IconLink
       src={LogoGithub}
       activeSrc={LogoGithubActive}
+      alt="Github"
       href="https://github.com/catnipan"
     />
     <IconLink
       src={LogoLinkedin}
       activeSrc={LogoLinkedinActive}
+      alt="LinkedIn"
       href="https://linkedin.com/in/yifanpan/"
     />
     <IconLink
       src={LogoMail}
       activeSrc={LogoMailActive}
+      alt="Email"
       href="mailto:pan.yifa@northeastern.edu"
     />
     <IconLink
       src={LogoResume}
       activeSrc={LogoResumeActive}
+      alt="Resume"
       href="/resume.pdf"
     />
   </Fragment>
