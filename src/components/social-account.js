@@ -45,7 +45,7 @@ export default function SocialAccount() {
       src={LogoResume}
       activeSrc={LogoResumeActive}
       alt="Resume"
-      href="/resume"
+      href={`/resume.pdf?v=${Math.random()}`}
     />
   </Fragment>
 }
