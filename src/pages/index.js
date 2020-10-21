@@ -52,6 +52,10 @@ export default function Home() {
         <meta charSet="utf-8" />
         <title>Yifan Pan</title>
         <link rel="canonical" href="https://yifan.catnipan.com" />
+        <meta property="og:image" content="/screenshot.png" />
+        <meta property="og:title" content="Yifan Pan's website" />
+        <meta property="og:description" content="Take a look at some of the projects made by Yifan Pan" />
+        <meta property="og:url" content="https://yifan.catnipan.com" />
     </Helmet>
     <header className={style.header}>
       <p className={style.hello}>Hi, I'm Yifan Pan.</p>
