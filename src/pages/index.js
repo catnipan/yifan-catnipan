@@ -8,6 +8,7 @@ import memorizingPng from '../../static/memorizing.png';
 import labyrinthSearchPng from '../../static/labyrinth-search.png';
 import resumeArrow from '../../static/resume_arrow.png';
 import cat from '../../static/cat.png';
+import { useTrail, animated } from 'react-spring';
 
 function Cat() {
   const [hovered, updateHovered] = useState(false);
@@ -46,7 +47,55 @@ function Project({ title, img, placeholder, subtitle, children, tags=[] }) {
   )
 }
 
+const data = [{
+  className: style.hello,
+  content: (
+    <>
+      Hi, I'm Yifan Pan.
+    </>
+  )
+}, {
+  className: style.intro,
+  content: (
+    <>
+      I'm currently pursuing a master's degree in computer science at Northeastern University.
+    </>
+  ),
+}, {
+  className: style.intro,
+  content: (
+    <>
+      Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
+    </>
+  ),
+}, {
+  className: style.intro,
+  content: (
+    <>
+    I love math, abstraction and its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
+    </>
+  )
+}, {
+  className: style.socialAccount,
+  content: (
+    <>
+      <SocialAccount /><img src={resumeArrow} alt="resume arrow" className={style.resumeArrow}/>
+    </>
+  )
+}, {
+  className: style.intro,
+  content: (
+    <>
+    You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)"
+    </>
+  ),
+}]
+
 export default function Home() {
+  const trail = useTrail(data.length, {
+    from: { opacity: 0, y: 40 },
+    to: { opacity: 1, y: 0 },
+  });
   return <div>
      <Helmet>
         <meta charSet="utf-8" />
@@ -58,18 +107,14 @@ export default function Home() {
         <meta property="og:url" content="https://yifan.catnipan.com" />
     </Helmet>
     <header className={style.header}>
-      <p className={style.hello}>Hi, I'm Yifan Pan.</p>
-      <p className={style.intro}>
-       I'm currently pursuing a master's degree in computer science at Northeastern University.
-      </p>
-      <p className={style.intro}>
-        Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
-      </p>
-      <p className={style.intro}>
-        I love math, abstraction and its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
-      </p>
-      <p className={style.socialAccount}><SocialAccount /><img src={resumeArrow} className={style.resumeArrow}/></p>
-      <p className={style.intro}>You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)</p>
+      {trail.map((props, idx) => (
+        <animated.p style={{
+          opacity: props.opacity,
+          transform: props.y.interpolate(y => `translate3d(0, ${y}px, 0)`),
+        }} className={data[idx].className}>
+          {data[idx].content}
+        </animated.p>
+      ))}
     </header>
     <section className={style.section}>
       <Project
