@@ -8,7 +8,7 @@ import memorizingPng from '../../static/memorizing.png';
 import labyrinthSearchPng from '../../static/labyrinth-search.png';
 import resumeArrow from '../../static/resume_arrow.png';
 import cat from '../../static/cat.png';
-import { useTrail, animated } from 'react-spring';
+import { useTrail, useSpring, animated } from 'react-spring';
 
 function Cat() {
   const [hovered, updateHovered] = useState(false);
@@ -19,31 +19,36 @@ function Link({ href, children }) {
   return <a className="openInNewWindow" href={href} target="_blank" rel="noreferrer">{children}</a>
 }
 
+
 function Project({ title, img, placeholder, subtitle, children, tags=[] }) {
+  const [props, set] = useSpring(() => ({ z: 0 }))
   return (
-    <Fragment>
-      <h2 className={style.title}>{title}</h2>
-      <div className={style.projectWrapper}>
-        <div className={style.project}>
-          <ul className={style.desc}>
-            {children}
-          </ul>
-          <div>
-            {tags.map(tag => (
-              <span className={style.tag} key={tag}>{tag}</span>
-            ))}
-          </div>
-        </div>
-        <div className={style.projectImg}>
-          {img
-            ? <img className={style.descImg} src={img} alt={title} />
-            : <div className={style.placeholderImg}>
-                {placeholder}
-              </div>
-          }
+    <animated.div
+      className={style.projectCard}
+      onMouseEnter={() => set({ z: 1 })}
+      onMouseLeave={() => set({ z: 0 })}
+      style={{ transform: props.z.interpolate(z => `perspective(1000px) translateZ(${z * 10}px)`) }}
+    >
+      <div className={style.cardleft}>
+        <h2 className={style.title}>{title}</h2>
+        <ul className={style.desc}>
+          {children}
+        </ul>
+        <div>
+          {tags.map(tag => (
+            <span className={style.tag} key={tag}>{tag}</span>
+          ))}
         </div>
       </div>
-    </Fragment>
+      <div className={style.projectImg}>
+        {img
+          ? <img className={style.descImg} src={img} alt={title} />
+          : <div className={style.placeholderImg}>
+              {placeholder}
+            </div>
+        }
+      </div>
+    </animated.div>
   )
 }
 
@@ -65,7 +70,7 @@ const data = [{
   className: style.intro,
   content: (
     <>
-      Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
+      <span className={style.annotated}>Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.</span>
     </>
   ),
 }, {
@@ -86,7 +91,7 @@ const data = [{
   className: style.intro,
   content: (
     <>
-    You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)"
+    You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)
     </>
   ),
 }]
@@ -130,7 +135,7 @@ export default function Home() {
       <Project
         title="Memorizing"
         img={memorizingPng}
-        tags={['Go', 'MySQL', 'Redis', 'GraphQL', 'React', 'Apollo']}
+        tags={['Go', 'MySQL', 'Redis', 'GraphQL', 'React', 'Apollo', 'React-Spring']}
       >
         <li>
           <Link href="https://catnipan.com/memorizing">Try Online</Link> | <Link href="https://github.com/catnipan/memorizing-app">Source code</Link>

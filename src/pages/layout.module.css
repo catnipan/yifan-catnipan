@@ -1,4 +1,5 @@
-.wrapper {
+.annotated {
+  border-bottom: 4px solid rgba(79,192,141,0.5);
 }
 
 .header {
@@ -27,38 +28,37 @@
 }
 
 .title {
-  /* display: inline-block; */
+  display: inline-block;
+  margin: 0 0 0.5em;
   font-size: 1.4em;
   position: relative;
   z-index: 1;
 }
 
-.title::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 60%;
-  left: -0.1em;
-  right: -0.1em;
-  bottom: 0;
-  background-color: rgba(217, 217, 217, 0.5);
-}
-
 .section {
-  padding: 3em 5vw;
-  background: #f9f9f9;
+  padding: 1px 3vw;
+  background: rgba(79,192,141,0.5);
   min-height: 100vh;
   font-size: 1.2em;
   font-weight: 300;
   box-sizing: border-box;
 }
 
-.projectWrapper {
+.projectCard {
+  background: #fff;
+  padding: 1em 2vw;
+  margin: 3vw 0;
+  border-radius: 0.2em;
+  box-shadow: 0 0 19px 5px rgba(79,192,141,0.5);
   display: flex;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
+.projectCard:hover {
+  box-shadow: 0 0 20px 2px rgb(79,192,141,0.96);
+}
 
-.project {
+.cardleft {
   flex: 1;
 }
 
@@ -78,10 +78,7 @@
 }
 
 .placeholderImg {
-  border: 1px solid #d2d2d2;
-  border-radius: 7px;
   background: #fff;
-  box-shadow: 5px 5px 0px #fff;
   width: 260px;
   height: 100%;
   display: flex;
@@ -107,9 +104,6 @@
 }
 
 .descImg {
-  border: 1px solid #d2d2d2;
-  border-radius: 7px;
-  box-shadow: 5px 5px 0px #fff;
 }
 
 .resumeArrow {
@@ -167,8 +161,8 @@
 	}
 }
 
-@media (max-width: 600px) {
-  .projectWrapper {
+@media (max-width: 700px) {
+  .projectCard {
     flex-direction: column;
   }
 
