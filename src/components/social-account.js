@@ -11,14 +11,23 @@ import style from './social-account.module.css';
 
 function IconLink({ src, activeSrc, alt, href }) {
   const [icon, updateIcon] = useState(src);
-  return <a className={style.linkButton} href={href} target="_blank" rel="noreferrer">
-    <img
-      src={icon}
-      alt={alt}
+  return (
+    <a
+      className={style.linkButton}
+      href={href}
+      target="_blank"
+      rel="noreferrer"
       onMouseOver={() => updateIcon(activeSrc)}
+      onFocus={() => updateIcon(activeSrc)}
       onMouseOut={() => updateIcon(src)}
-    />
-  </a>
+      onBlur={() => updateIcon(src)}
+    >
+      <img
+        src={icon}
+        alt={alt}
+      />
+    </a>
+  );
 }
 
 export default function SocialAccount() {

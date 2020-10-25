@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { useState } from "react"
 import style from "./layout.module.css"
 import { Helmet } from "react-helmet";
 import SocialAccount from '../components/social-account';
@@ -8,11 +8,20 @@ import memorizingPng from '../../static/memorizing.png';
 import labyrinthSearchPng from '../../static/labyrinth-search.png';
 import resumeArrow from '../../static/resume_arrow.png';
 import cat from '../../static/cat.png';
-import { useTrail, useSpring, animated } from 'react-spring';
+import { useTrail, useSpring, animated, config } from 'react-spring';
+import TrackVisibility from 'react-on-screen';
 
 function Cat() {
   const [hovered, updateHovered] = useState(false);
-  return <img className={`${style.cat} ${hovered ? `${style.wave}` : ''}`} src={cat} alt="cat" onMouseOver={() => updateHovered(true)} onMouseOut={() => updateHovered(false)} />;
+  return <img
+    className={`${style.cat} ${hovered ? `${style.wave}` : ''}`}
+    src={cat}
+    alt="cat"
+    onMouseOver={() => updateHovered(true)}
+    onFocus={() => updateHovered(true)}
+    onMouseOut={() => updateHovered(false)}
+    onBlur={() => updateHovered(false)}
+  />;
 }
 
 function Link({ href, children }) {
@@ -20,14 +29,19 @@ function Link({ href, children }) {
 }
 
 
-function Project({ title, img, placeholder, subtitle, children, tags=[] }) {
-  const [props, set] = useSpring(() => ({ z: 0 }))
+function ProjectInner({ title, img, placeholder, subtitle, children, tags=[], isVisible }) {
+  const { opacity, x } = useSpring({
+    from: { opacity: 0.4, x: 20 },
+    to: { opacity: isVisible ? 1 : 0.4, x: isVisible ? 0 : 20 },
+    config: config.wobbly,
+  })
   return (
     <animated.div
+      style={{
+        opacity,
+        transform: x.interpolate(x => `translateX(${x}px)`),
+      }}
       className={style.projectCard}
-      onMouseEnter={() => set({ z: 1 })}
-      onMouseLeave={() => set({ z: 0 })}
-      style={{ transform: props.z.interpolate(z => `perspective(1000px) translateZ(${z * 10}px)`) }}
     >
       <div className={style.cardleft}>
         <h2 className={style.title}>{title}</h2>
@@ -49,6 +63,14 @@ function Project({ title, img, placeholder, subtitle, children, tags=[] }) {
         }
       </div>
     </animated.div>
+  )
+}
+
+function Project(props) {
+  return (
+    <TrackVisibility once partialVisibility>
+      <ProjectInner {...props} />
+    </TrackVisibility>
   )
 }
 
@@ -100,6 +122,7 @@ export default function Home() {
   const trail = useTrail(data.length, {
     from: { opacity: 0, y: 40 },
     to: { opacity: 1, y: 0 },
+    config: config.stiff,
   });
   return <div>
      <Helmet>
@@ -113,10 +136,14 @@ export default function Home() {
     </Helmet>
     <header className={style.header}>
       {trail.map((props, idx) => (
-        <animated.p style={{
-          opacity: props.opacity,
-          transform: props.y.interpolate(y => `translate3d(0, ${y}px, 0)`),
-        }} className={data[idx].className}>
+        <animated.p
+          style={{
+            opacity: props.opacity,
+            transform: props.y.interpolate(y => `translate3d(0, ${y}px, 0)`),
+          }}
+          className={data[idx].className}
+          key={idx}
+        >
           {data[idx].content}
         </animated.p>
       ))}

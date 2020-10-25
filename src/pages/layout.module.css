@@ -49,13 +49,14 @@
   padding: 1em 2vw;
   margin: 3vw 0;
   border-radius: 0.2em;
-  box-shadow: 0 0 19px 5px rgba(79,192,141,0.5);
+  box-shadow: 0 0 10px 0px rgba(79,192,141,0.5);
   display: flex;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: box-shadow 1s cubic-bezier(.17,.84,.44,1), transform 1s cubic-bezier(.23,1,.32,1);
 }
 
 .projectCard:hover {
-  box-shadow: 0 0 20px 2px rgb(79,192,141,0.96);
+  box-shadow: 0 5px 20px 0px rgba(68, 179, 129, 0.96);
+  transform: translateY(-10px);
 }
 
 .cardleft {
@@ -75,6 +76,12 @@
   background: #e3e3e3cc;
   color: #000;
   line-height: 1.5em;
+}
+
+.tag:hover {
+  background: rgba(79,192,141,.5);
+  color: rgb(17, 108, 67);
+  cursor: default;
 }
 
 .placeholderImg {
