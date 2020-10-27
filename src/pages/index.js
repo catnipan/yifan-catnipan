@@ -34,7 +34,12 @@ function ProjectInner({ title, img, placeholder, subtitle, children, tags=[], is
     from: { opacity: 0.4, x: 20 },
     to: { opacity: isVisible ? 1 : 0.4, x: isVisible ? 0 : 20 },
     config: config.wobbly,
-  })
+  });
+  const [bgStyle, set] = useSpring(() => ({ s: 0, config: {
+    mass: 1,
+    tension: 700,
+    friction: 14,
+  } }));
   return (
     <animated.div
       style={{
@@ -42,25 +47,33 @@ function ProjectInner({ title, img, placeholder, subtitle, children, tags=[], is
         transform: x.interpolate(x => `translateX(${x}px)`),
       }}
       className={style.projectCard}
+      onMouseEnter={() => set({ s: 8 })}
+      onMouseLeave={() => set({ s: 0 })}
     >
-      <div className={style.cardleft}>
-        <h2 className={style.title}>{title}</h2>
-        <ul className={style.desc}>
-          {children}
-        </ul>
-        <div>
-          {tags.map(tag => (
-            <span className={style.tag} key={tag}>{tag}</span>
-          ))}
+      <animated.div
+        className={style.projectCardBg} style={{
+        transform: bgStyle.s.interpolate(s => `perspective(500px) translateZ(${s}px)`),
+      }} />
+      <div className={style.projectContent}>
+        <div className={style.cardleft}>
+          <h2 className={style.title}>{title}</h2>
+          <ul className={style.desc}>
+            {children}
+          </ul>
+          <div>
+            {tags.map(tag => (
+              <span className={style.tag} key={tag}>{tag}</span>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className={style.projectImg}>
-        {img
-          ? <img className={style.descImg} src={img} alt={title} />
-          : <div className={style.placeholderImg}>
-              {placeholder}
-            </div>
-        }
+        <div className={style.projectImg}>
+          {img
+            ? <img className={style.descImg} src={img} alt={title} />
+            : <div className={style.placeholderImg}>
+                {placeholder}
+              </div>
+          }
+        </div>
       </div>
     </animated.div>
   )
@@ -110,10 +123,10 @@ const data = [{
     </>
   )
 }, {
-  className: style.intro,
+  className: style.lastIntro,
   content: (
     <>
-    You can read my resume,&emsp;&nbsp;&emsp;or take a look at some projects that I've been working on :)
+    You can read my resume,&emsp;&emsp;or take a look at some projects that I've been working on :)
     </>
   ),
 }]
