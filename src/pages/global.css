@@ -35,5 +35,5 @@ footer {
 }
 
 ::selection {
-  background: yellow;
+  background: rgba(79, 192, 141, 0.25);
 }
