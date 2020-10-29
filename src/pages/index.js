@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import style from "./layout.module.css"
 import { Helmet } from "react-helmet";
 import SocialAccount from '../components/social-account';
@@ -8,7 +8,7 @@ import memorizingPng from '../../images/memorizing.png';
 import labyrinthSearchPng from '../../images/labyrinth-search.png';
 import resumeArrow from '../../images/resume_arrow.png';
 import cat from '../../images/cat.png';
-import { useTrail, useSpring, animated, config } from 'react-spring';
+import { useTrail, useSpring, animated, config, useChain } from 'react-spring';
 import TrackVisibility from 'react-on-screen';
 
 function Cat() {
@@ -87,56 +87,72 @@ function Project(props) {
   )
 }
 
-const data = [{
-  className: style.hello,
-  content: (
-    <>
-      Hi, I'm Yifan Pan.
-    </>
-  )
-}, {
-  className: style.intro,
-  content: (
-    <>
-      I'm currently pursuing a master's degree in computer science at Northeastern University.
-    </>
-  ),
-}, {
-  className: style.intro,
-  content: (
-    <>
-      <span className={style.annotated}>Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.</span>
-    </>
-  ),
-}, {
-  className: style.intro,
-  content: (
-    <>
-    I love math, abstraction and its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
-    </>
-  )
-}, {
-  className: style.socialAccount,
-  content: (
-    <>
-      <SocialAccount /><img src={resumeArrow} alt="resume arrow" className={style.resumeArrow}/>
-    </>
-  )
-}, {
-  className: style.lastIntro,
-  content: (
-    <>
-    You can read my resume,&emsp;&emsp;or take a look at some projects that I've been working on :)
-    </>
-  ),
-}]
-
 export default function Home() {
+  const annotatedRef = useRef();
+  const annotated = useSpring({
+    from: { x: 0 },
+    to: { x: 50 },
+    config: config.gentle,
+    ref: annotatedRef,
+  });
+  const data = [{
+    className: style.hello,
+    content: (
+      <>
+        Hi, I'm Yifan Pan.
+      </>
+    )
+  }, {
+    className: style.intro,
+    content: (
+      <>
+        I'm currently pursuing a master's degree in computer science at Northeastern University.
+      </>
+    ),
+  }, {
+    className: style.intro,
+    content: (
+      <>
+        <animated.span style={{
+          background: annotated.x.interpolate(x => {
+            console.log(x);
+            return `linear-gradient(0deg, rgb(255, 255, 0) ${x}%, rgb(255, 255, 255) ${x}%)`;
+          }),
+        }}>
+          Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
+        </animated.span>
+      </>
+    ),
+  }, {
+    className: style.intro,
+    content: (
+      <>
+      I love math, abstraction and its beautiful interplays with programming. In my spare time, I enjoy petting <Cat />, reading sci-fi novels and watching suspense movies.
+      </>
+    )
+  }, {
+    className: style.socialAccount,
+    content: (
+      <>
+        <SocialAccount /><img src={resumeArrow} alt="resume arrow" className={style.resumeArrow}/>
+      </>
+    )
+  }, {
+    className: style.lastIntro,
+    content: (
+      <>
+      You can read my resume,&emsp;&emsp;or take a look at some projects that I've been working on :)
+      </>
+    ),
+  }];
+  const trailRef = useRef();
   const trail = useTrail(data.length, {
     from: { opacity: 0, y: 40 },
     to: { opacity: 1, y: 0 },
     config: config.stiff,
+    ref: trailRef,
   });
+  useChain([trailRef, annotatedRef], [0, 0.3]);
   return <div>
      <Helmet>
         <meta charSet="utf-8" />
