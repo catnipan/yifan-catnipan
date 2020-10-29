@@ -54,6 +54,7 @@
 .projectContent {
   padding: 2vw;
   display: flex;
+  transform: translateZ(1000px);
 }
 
 .projectCardBg {
