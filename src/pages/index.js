@@ -51,9 +51,11 @@ function ProjectInner({ title, img, placeholder, subtitle, children, tags=[], is
       onMouseLeave={() => set({ s: 0 })}
     >
       <animated.div
-        className={style.projectCardBg} style={{
-        transform: bgStyle.s.interpolate(s => `perspective(500px) translateZ(${s}px)`),
-      }} />
+        className={style.projectCardBg}
+        style={{
+          transform: bgStyle.s.interpolate(s => `perspective(500px) translateZ(${s}px)`),
+        }}
+      />
       <div className={style.projectContent}>
         <div className={style.cardleft}>
           <h2 className={style.title}>{title}</h2>
@@ -88,17 +90,27 @@ function Project(props) {
 }
 
 export default function Home() {
-  const annotatedRef = useRef();
-  const annotated = useSpring({
+  const bgRef = useRef();
+  const bgStyle = useSpring({
     from: { x: 0 },
-    to: { x: 50 },
-    ref: annotatedRef,
+    to: { x: 1 },
+    ref: bgRef,
+  });
+  const annotateRef = useRef();
+  const annotateProps = useSpring({
+    from: { x: 0 },
+    to: { x: 1 },
+    ref: annotateRef,
   });
   const data = [{
     className: style.hello,
     content: (
       <>
-        Hi, I'm Yifan Pan.
+        Hi, I'm <animated.span style={{
+          background: annotateProps.x.interpolate(x => (
+            `rgba(0, 0, 0, 0) linear-gradient(0deg, #c6e2fd99 ${x * 35}%, rgb(255, 255, 255, 0) ${x * 35}%) repeat scroll 0% 0%`
+          )),
+        }}>Yifan Pan</animated.span>.
       </>
     )
   }, {
@@ -113,8 +125,8 @@ export default function Home() {
     content: (
       <>
         <animated.span style={{
-          background: annotated.x.interpolate(x => (
-            `rgba(0, 0, 0, 0) linear-gradient(0deg, rgb(255, 255, 0) ${x}%, rgb(255, 255, 255, 0) ${x}%) repeat scroll 0% 0%`
+          background: annotateProps.x.interpolate(x => (
+            `rgba(0, 0, 0, 0) linear-gradient(0deg, #c6e2fd99 ${x * 50}%, rgb(255, 255, 255, 0) ${x * 50}%) repeat scroll 0% 0%`
           )),
         }}>
           Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
@@ -139,7 +151,7 @@ export default function Home() {
     className: style.lastIntro,
     content: (
       <>
-      You can read my resume,&emsp;&emsp;or take a look at some projects that I've been working on :)
+      Please read my resume,&emsp;&emsp;or take a look at some projects that I've been working on :)
       </>
     ),
   }];
@@ -150,7 +162,7 @@ export default function Home() {
     config: config.stiff,
     ref: trailRef,
   });
-  useChain([trailRef, annotatedRef], [0, 0.3]);
+  useChain([bgRef, trailRef, annotateRef], [0, 0.3, 0.6]);
   return <div>
      <Helmet>
         <meta charSet="utf-8" />
@@ -161,20 +173,26 @@ export default function Home() {
         <meta property="og:description" content="Take a look at some of the projects made by Yifan Pan" />
         <meta property="og:url" content="https://yifan.catnipan.com" />
     </Helmet>
-    <header className={style.header}>
-      {trail.map((props, idx) => (
-        <animated.p
-          style={{
-            opacity: props.opacity,
-            transform: props.y.interpolate(y => `translate3d(0, ${y}px, 0)`),
-          }}
-          className={data[idx].className}
-          key={idx}
-        >
-          {data[idx].content}
-        </animated.p>
-      ))}
-    </header>
+    <animated.header className={style.header} style={{
+      background: bgStyle.x.interpolate(x => (
+        `rgba(255, 255, 255, 0) linear-gradient(${-x * 10}deg, rgb(255, 255, 255) ${35 * x}%, aliceblue ${35 * x}%) repeat scroll 0% 0%`
+      )),
+    }}>
+      <div className={style.headerInner}>
+        {trail.map((props, idx) => (
+          <animated.p
+            style={{
+              opacity: props.opacity,
+              transform: props.y.interpolate(y => `translate3d(0, ${y}px, 0)`),
+            }}
+            className={data[idx].className}
+            key={idx}
+          >
+            {data[idx].content}
+          </animated.p>
+        ))}
+      </div>
+    </animated.header>
     <section className={style.section}>
       <Project
         title="Connect Four Online Battle"

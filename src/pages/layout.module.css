@@ -1,7 +1,10 @@
 .header {
-  padding: 0 5vw;
   min-height: 100vh;
-  max-width: 50em;
+}
+
+.headerInner {
+  max-width: 55em;
+  padding: 0 5vw;
 }
 
 .hello {
@@ -26,7 +29,7 @@
 }
 
 .socialAccount {
-  margin: 2em 0;
+  margin: 2em 0 2em -0.6em;
   position: relative;
 }
 
@@ -125,8 +128,8 @@
 
 .resumeArrow {
   position: absolute;
-  top: 0px;
-  left: 146px;
+  top: -3px;
+  left: 148px;
   pointer-events: none;
   user-select: none;
 }
@@ -141,7 +144,7 @@
   vertical-align: bottom;
   animation-duration: 1s;
   animation-fill-mode: both;
-  cursor: pointer;
+  cursor: default;
 }
 
 .wave {

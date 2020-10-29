@@ -1,59 +1,52 @@
 import React, { Fragment, useState } from "react"
-import LogoGithub from '../../images/logo_github.svg';
-import LogoLinkedin from '../../images/logo_linkedin.svg';
-import LogoMail from '../../images/logo_mail.svg';
-import LogoGithubActive from '../../images/logo_github_active.svg';
-import LogoLinkedinActive from '../../images/logo_linkedin_active.svg';
-import LogoMailActive from '../../images/logo_mail_active.svg';
-import LogoResume from '../../images/logo_resume.svg';
-import LogoResumeActive from '../../images/logo_resume_active.svg';
+import { animated, useSpring } from 'react-spring';
 import style from './social-account.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAt, faFile } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
-function IconLink({ src, activeSrc, alt, href }) {
-  const [icon, updateIcon] = useState(src);
+function IconLink({ icon, href }) {
+  const [bgStyle, set] = useSpring(() => ({
+    s: 0,
+    config: {
+      mass: 1,
+      tension: 700,
+      friction: 14,
+    },
+  }));
   return (
-    <a
+    <animated.a
       className={style.linkButton}
       href={href}
       target="_blank"
       rel="noreferrer"
-      onMouseOver={() => updateIcon(activeSrc)}
-      onFocus={() => updateIcon(activeSrc)}
-      onMouseOut={() => updateIcon(src)}
-      onBlur={() => updateIcon(src)}
+      onMouseEnter={() => set({ s: 80 })}
+      onMouseLeave={() => set({ s: 0 })}
+      style={{
+        transform: bgStyle.s.interpolate(s => `perspective(500px) translateZ(${s}px)`),
+      }}
     >
-      <img
-        src={icon}
-        alt={alt}
-      />
-    </a>
-  );
+      <FontAwesomeIcon icon={icon} size="2x" color="#555" />
+    </animated.a>
+  )
 }
 
 export default function SocialAccount() {
   return <Fragment>
     <IconLink
-      src={LogoGithub}
-      activeSrc={LogoGithubActive}
-      alt="Github"
+      icon={faGithub}
       href="https://github.com/catnipan"
     />
     <IconLink
-      src={LogoLinkedin}
-      activeSrc={LogoLinkedinActive}
-      alt="LinkedIn"
+      icon={faLinkedinIn}
       href="https://linkedin.com/in/yifanpan/"
     />
     <IconLink
-      src={LogoMail}
-      activeSrc={LogoMailActive}
-      alt="Email"
+      icon={faAt}
       href="mailto:pan.yifa@northeastern.edu"
     />
     <IconLink
-      src={LogoResume}
-      activeSrc={LogoResumeActive}
-      alt="Resume"
+      icon={faFile}
       href={`/resume.pdf?v=${Math.random()}`}
     />
   </Fragment>
