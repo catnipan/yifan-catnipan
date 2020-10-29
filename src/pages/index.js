@@ -3,11 +3,11 @@ import style from "./layout.module.css"
 import { Helmet } from "react-helmet";
 import SocialAccount from '../components/social-account';
 import "./global.css"
-import connectFourPng from '../../static/connect-four.png';
-import memorizingPng from '../../static/memorizing.png';
-import labyrinthSearchPng from '../../static/labyrinth-search.png';
-import resumeArrow from '../../static/resume_arrow.png';
-import cat from '../../static/cat.png';
+import connectFourPng from '../../images/connect-four.png';
+import memorizingPng from '../../images/memorizing.png';
+import labyrinthSearchPng from '../../images/labyrinth-search.png';
+import resumeArrow from '../../images/resume_arrow.png';
+import cat from '../../images/cat.png';
 import { useTrail, useSpring, animated, config } from 'react-spring';
 import TrackVisibility from 'react-on-screen';
 
