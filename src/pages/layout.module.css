@@ -43,8 +43,6 @@
 
 .section {
   padding: 1px 3vw;
-  background: rgba(79,192,141,0.5);
-  min-height: 100vh;
   font-size: 1.2em;
   font-weight: 300;
   box-sizing: border-box;
@@ -66,9 +64,9 @@
   height: 100%;
   z-index: -1;
   background: #fff;
-  border-radius: 0.2em;
-  box-shadow: 0 0 10px 0px rgba(79,192,141,1);
-  transition: box-shadow 0.2s cubic-bezier(.17,.84,.44,1), transform 0.25s cubic-bezier(.23,1,.65,1.59);
+  border-radius: .3em;
+  border: 1px solid #bbd7f0;
+  box-shadow: 0.3em 0.3em 0 #eaeaea6e;
 }
 
 
@@ -92,8 +90,8 @@
 }
 
 .tag:hover {
-  background: rgba(79,192,141,.5);
-  color: rgb(17, 108, 67);
+  background: #d9ebfb;
+  color: #537da2;
   cursor: default;
 }
 
