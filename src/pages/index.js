@@ -92,7 +92,6 @@ export default function Home() {
   const annotated = useSpring({
     from: { x: 0 },
     to: { x: 50 },
-    config: config.gentle,
     ref: annotatedRef,
   });
   const data = [{
@@ -114,10 +113,9 @@ export default function Home() {
     content: (
       <>
         <animated.span style={{
-          background: annotated.x.interpolate(x => {
-            console.log(x);
-            return `linear-gradient(0deg, rgb(255, 255, 0) ${x}%, rgb(255, 255, 255) ${x}%)`;
-          }),
+          background: annotated.x.interpolate(x => (
+            `rgba(0, 0, 0, 0) linear-gradient(0deg, rgb(255, 255, 0) ${x}%, rgb(255, 255, 255, 0) ${x}%) repeat scroll 0% 0%`
+          )),
         }}>
           Before that I was a self-taught front-end engineer. Except for being proficient in JavaScript and React, I'm learning Rust and back-end technologies and working towards being a full-stack engineer.
         </animated.span>
